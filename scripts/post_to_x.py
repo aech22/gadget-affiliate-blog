@@ -7,7 +7,7 @@ import json, os, sys
 from pathlib import Path
 import yaml
 
-SITE = "https://picknavi.net"
+SITE = "https://aech22.github.io/gadget-affiliate-blog"
 ART_DIR = Path(__file__).resolve().parent.parent / "content" / "articles"
 STATE = Path(__file__).resolve().parent / "posted_x.json"
 MAX_PER_RUN = 3   # 1回の実行での最大投稿数（過去記事の一気投稿＝スパム化を防ぐ）

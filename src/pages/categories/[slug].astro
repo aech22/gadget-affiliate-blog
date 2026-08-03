@@ -20,14 +20,14 @@ export async function getStaticPaths() {
 
 const { cat, articles } = Astro.props;
 const gender = genderBySlug(cat.gender);
-const title = `${cat.label}のおすすめ比較記事｜picknavi`;
+const title = `${cat.label}のおすすめ比較記事｜ガジェナビ`;
 const description = cat.blurb;
 const breadcrumbs = [
   { name: 'ホーム', url: '/' },
   ...(gender ? [{ name: gender.label, url: `/${gender.slug}/` }] : []),
   { name: cat.label, url: `/categories/${cat.slug}/` },
 ];
-const site = Astro.site ?? new URL('https://picknavi.net');
+const site = Astro.site ?? new URL('https://aech22.github.io/gadget-affiliate-blog');
 const listLd = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',

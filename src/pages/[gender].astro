@@ -20,13 +20,13 @@ export async function getStaticPaths() {
 }
 
 const { g, cats, articles } = Astro.props;
-const title = `${g.label}のおすすめ比較記事｜picknavi`;
+const title = `${g.label}のおすすめ比較記事｜ガジェナビ`;
 const description = g.blurb;
 const breadcrumbs = [
   { name: 'ホーム', url: '/' },
   { name: g.label, url: `/${g.slug}/` },
 ];
-const site = Astro.site ?? new URL('https://picknavi.net');
+const site = Astro.site ?? new URL('https://aech22.github.io/gadget-affiliate-blog');
 const listLd = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',

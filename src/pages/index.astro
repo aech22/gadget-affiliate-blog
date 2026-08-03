@@ -12,11 +12,11 @@ const articles = (await getCollection('articles')).sort(
 const usedCats = new Set(articles.map((a) => a.data.categorySlug).filter(Boolean));
 const catChips = CATEGORIES.filter((c) => usedCats.has(c.slug));
 
-const site = Astro.site ?? new URL('https://picknavi.net');
+const site = Astro.site ?? new URL('https://aech22.github.io/gadget-affiliate-blog');
 const listLd = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
-  name: 'picknavi の比較記事一覧',
+  name: 'ガジェナビ の比較記事一覧',
   numberOfItems: articles.length,
   itemListElement: articles.map((a, i) => ({
     '@type': 'ListItem',
@@ -26,7 +26,7 @@ const listLd = {
   })),
 };
 ---
-<BaseLayout title="picknavi｜写真とレビューで選ぶ おすすめ商品比較">
+<BaseLayout title="ガジェナビ｜写真とレビューで選ぶ おすすめ商品比較">
   <Jsonld data={listLd} />
 
   <!-- ヒーロー -->
