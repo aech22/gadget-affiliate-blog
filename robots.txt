@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://aech22.github.io/gadget-affiliate-blog/sitemap-index.xml
