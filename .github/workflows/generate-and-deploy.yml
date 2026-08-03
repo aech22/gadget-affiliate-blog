@@ -30,7 +30,7 @@ jobs:
           RAKUTEN_AFFILIATE_ID:  ${{ secrets.RAKUTEN_AFFILIATE_ID }}
           ANTHROPIC_API_KEY:     ${{ secrets.ANTHROPIC_API_KEY }}
           # Origin/Referer は機密でないので平文。新APIの必須ヘッダに使う（登録ドメインと一致）
-          RAKUTEN_REFERER:       https://aech22.github.io/rakuten-affiliate-blog/
+          RAKUTEN_REFERER:       https://aech22.github.io/gadget-affiliate-blog/
           RAKUTEN_ORIGIN:        https://aech22.github.io
         run: python scripts/main.py
 
