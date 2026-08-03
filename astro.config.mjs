@@ -8,7 +8,7 @@ import tailwindcss from '@tailwindcss/vite';
 // この base 行を消すだけで BASE_URL='/' になり、コード無変更で両対応できる（手戻りゼロ）。
 export default defineConfig({
   site: 'https://aech22.github.io',
-  base: '/gadget-affiliate-blog',
+  base: '/gadget-affiliate-blog/',
   integrations: [sitemap({ changefreq: 'weekly', priority: 0.7 })],
   vite: {
     plugins: [tailwindcss()],
