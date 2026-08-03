@@ -18,9 +18,9 @@ export interface Gender {
   blurb: string;
 }
 
+// ガジェナビは全カテゴリ unisex のため、メンズ系/レディース系タブは廃止（2026-08-03）。
+// unisex のみ残す（/unisex/ ページと各種ヘルパーの後方互換を維持）。
 export const GENDERS: Gender[] = [
-  { slug: 'men',    label: 'メンズ系',       emoji: '🧔', blurb: '男性向けのファッション・アイテムをまとめてチェック。' },
-  { slug: 'women',  label: 'レディース系',   emoji: '👩', blurb: '女性向けのファッション・アイテムをまとめてチェック。' },
   { slug: 'unisex', label: 'ユニセックス系', emoji: '🧑', blurb: '性別を問わず使える人気アイテムをまとめてチェック。' },
 ];
 
