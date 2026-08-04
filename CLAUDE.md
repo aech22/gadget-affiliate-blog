@@ -44,6 +44,7 @@ Cloudflare 管理。A レコード4本（185.199.108-111.153）・**グレー雲
 
 - **base パス（最重要・解決済み）**: GitHub プロジェクトページのサブパス配信（`/gadget-affiliate-blog/`）では、Astro の `base` 未設定だと CSS/JS 資産も内部リンクも全てルート絶対で404＝「開くがスタイル崩れ＋全リンク404」。picknavi は独自ドメインのルート配信なので露呈しない問題。対策として**内部リンクを全て `import.meta.env.BASE_URL` 方式**にしてある（`base` 行を消すだけで両対応＝手戻りゼロ）。`base` 指定は末尾スラッシュ必須
 - **bot が記事を main にコミットする**ので、再 push の前に `git pull --rebase`
+- **`--field skip_generate=true` は使えない**。picknavi の workflow にはあるが**ガジェナビの `generate-and-deploy.yml` にはこの input が無い**ため、付けると `HTTP 422: Unexpected inputs provided` になる（2026-08-05 実測）。テンプレ/コードだけの変更でも記事再生成が走る（5〜10分）
 
 ## 残ポリッシュ
 
