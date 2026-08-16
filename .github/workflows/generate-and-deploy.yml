@@ -1,9 +1,14 @@
 name: Generate Articles & Deploy
 
 on:
-  schedule:
-    - cron: '0 1 * * *'  # 毎日 JST 10:00（価格・在庫を24時間以内に更新＝楽天規約準拠）
-  workflow_dispatch:     # 手動実行も可
+  # 【待機中 2026-08-17〜】記事生成を picknavi と The Japan Desk に絞る方針のため、日次実行を停止。
+  # 再開するときは下の2行のコメントを外すだけでよい（他は何も変えていない）。
+  #   schedule:
+  #     - cron: '0 1 * * *'  # 毎日 JST 10:00（価格・在庫を24時間以内に更新＝楽天規約準拠）
+  #
+  # ⚠️ 停止中は楽天APIからの価格・在庫の再取得も止まる。表示価格が古いままになるため、
+  #    待機が長引くならサイトの noindex 化か手動実行での定期更新を検討すること。
+  workflow_dispatch:     # 手動実行は残す（再開せずに1回だけ回したいとき用）
 
 permissions:
   contents: write
