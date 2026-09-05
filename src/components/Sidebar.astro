@@ -9,6 +9,16 @@ const recent = (await getCollection('articles'))
 // A8.net WOWOWオンデマンド（VOD）テキストリンク。イヤホン・スマート家電の読者→おうちエンタメの文脈。
 // 規約どおり原文のまま。& のJSXパース回避で set:html。
 const wowowHtml = `<a href="https://px.a8.net/svt/ejp?a8mat=4B9X1D+8ZAE9E+5DFW+5YJRM" rel="nofollow sponsored" target="_blank" class="font-bold text-brand-600 hover:underline">【映画・スポーツ・海外ドラマみるなら】WOWOWオンデマンド</a><img border="0" width="1" height="1" src="https://www12.a8.net/0.gif?a8mat=4B9X1D+8ZAE9E+5DFW+5YJRM" alt="">`;
+
+// A8.net DJI Store（ドローン・アクションカメラの公式直販）テキストリンク。camera-gear の読者の文脈。
+// 規約どおり原文のまま。& のJSXパース回避で set:html。
+const djiHtml = `<a href="https://px.a8.net/svt/ejp?a8mat=4BC3YU+461982+5WBC+5YJRM" rel="nofollow sponsored" target="_blank" class="font-bold text-brand-600 hover:underline">世界シェアNo.1ドローンブランドの公式直販店【DJI Store】</a><img border="0" width="1" height="1" src="https://www10.a8.net/0.gif?a8mat=4BC3YU+461982+5WBC+5YJRM" alt="">`;
+
+// A8.net カメラのキタムラ（カメラ用品の総合通販）テキストリンク。DJI と同じ camera-gear 枠に同居させる。
+const kitamuraHtml = `<a href="https://px.a8.net/svt/ejp?a8mat=4BC3YU+46MOTU+2O9U+5YJRM" rel="nofollow sponsored" target="_blank" class="font-bold text-brand-600 hover:underline">カメラのキタムラ ネットショップ</a><img border="0" width="1" height="1" src="https://www16.a8.net/0.gif?a8mat=4BC3YU+46MOTU+2O9U+5YJRM" alt="">`;
+
+// A8.net インクナビ（互換インク）テキストリンク。pc-peripheral の読者→プリンターのランニングコストの文脈。
+const inknaviHtml = `<a href="https://px.a8.net/svt/ejp?a8mat=4BC3YU+3UQ0QA+2EFE+5YJRM" rel="nofollow sponsored" target="_blank" class="font-bold text-brand-600 hover:underline">激安インク販売の【インクナビ】送料無料。</a><img border="0" width="1" height="1" src="https://www11.a8.net/0.gif?a8mat=4BC3YU+3UQ0QA+2EFE+5YJRM" alt="">`;
 ---
 <aside class="space-y-6">
   <section class="rounded-2xl border border-black/5 bg-white p-5">
@@ -40,6 +50,19 @@ const wowowHtml = `<a href="https://px.a8.net/svt/ejp?a8mat=4B9X1D+8ZAE9E+5DFW+5
     <p class="mb-2 text-xs leading-relaxed text-ink/60">せっかく揃えたイヤホンやテレビを活かすなら。スポーツ・音楽ライブ・海外ドラマをスマホでもテレビでも楽しめます。</p>
     <p class="text-sm leading-snug" set:html={wowowHtml} />
   </section>
+  <section class="rounded-2xl border border-black/5 bg-white p-4">
+    <p class="mb-2 text-[11px] font-black tracking-wide text-ink/35">広告 · カメラ・ドローン</p>
+    <p class="mb-2 text-xs leading-relaxed text-ink/60">映像用の機材は本体だけでなく、保証や周辺機器まで揃うかで使い勝手が変わります。公式直販と国内最大級の専門店をどちらも見ておくと選びやすくなります。</p>
+    <p class="mb-3 text-sm leading-snug" set:html={djiHtml} />
+    <p class="text-sm leading-snug" set:html={kitamuraHtml} />
+  </section>
+
+  <section class="rounded-2xl border border-black/5 bg-white p-4">
+    <p class="mb-2 text-[11px] font-black tracking-wide text-ink/35">広告 · プリンターの維持費</p>
+    <p class="mb-2 text-xs leading-relaxed text-ink/60">本体より後から効いてくるのがインク代です。純正以外の選択肢を知っておくと、買い替えの判断も変わります。</p>
+    <p class="text-sm leading-snug" set:html={inknaviHtml} />
+  </section>
+
   <ShiftyPromo variant="sidebar" />
 
 </aside>
