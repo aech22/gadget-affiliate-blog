@@ -17,6 +17,12 @@ JST = datetime.timezone(datetime.timedelta(hours=9))
 # 出力先は常にリポジトリルート直下の content/articles（scripts の1つ上）
 OUT_DIR = Path(__file__).resolve().parent.parent / "content" / "articles"
 
+# FORCE_PROSE=1 で「商品が入れ替わっていないから講評文は据え置き」の最適化を無効にする。
+# 生成プロンプト（SYSTEM_PROMPT）の文体ルールを変えても、通常運転では商品が変わらない記事の
+# 講評文が古い文体のまま残り続ける。文体の基準を変えたときに既存記事を追随させるための入口。
+# 全記事でLLMを呼ぶので日次運転では使わない（workflow の force_prose 入力から手動でのみ渡す）。
+FORCE_PROSE = os.environ.get("FORCE_PROSE", "").lower() in ("1", "true", "yes")
+
 def slugify(theme: str) -> str:
     # 日本語は isalnum()=True のため保持される。URLは固定（トピック単位・日付を含めない＝重複コンテンツ回避）。
     return "".join(c if c.isalnum() else "-" for c in theme).strip("-")[:60]
@@ -54,7 +60,7 @@ def main() -> None:
             path = OUT_DIR / f"{slugify(topic['theme'])}.md"
             prev = _existing_frontmatter(path)
             publish_date = _publish_date(prev) or today                   # 初回のみ today、以降は維持
-            reused = reusable_prose(products, prev)
+            reused = reusable_prose(products, prev) and not FORCE_PROSE
             if reused:
                 # 商品が1件も入れ替わっていない → 講評文は据え置き、価格・レビューだけ最新にする
                 fm = rebuild_article(products, prev, publish_date, label,

@@ -9,6 +9,11 @@ on:
   # ⚠️ 停止中は楽天APIからの価格・在庫の再取得も止まる。表示価格が古いままになるため、
   #    待機が長引くならサイトの noindex 化か手動実行での定期更新を検討すること。
   workflow_dispatch:     # 手動実行は残す（再開せずに1回だけ回したいとき用）
+    inputs:
+      force_prose:
+        description: '講評文を全記事で作り直す（生成プロンプトの文体を変えたとき用・LLM呼び出しが全記事分かかる）'
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -37,6 +42,8 @@ jobs:
           # Origin/Referer は機密でないので平文。新APIの必須ヘッダに使う（登録ドメインと一致）
           RAKUTEN_REFERER:       https://aech22.github.io/gadget-affiliate-blog/
           RAKUTEN_ORIGIN:        https://aech22.github.io
+          # boolean 入力を env 経由で渡す（run: に直接展開しない＝コマンドインジェクション対策）
+          FORCE_PROSE:           ${{ inputs.force_prose }}
         run: python scripts/main.py
 
       # 機械的品質ゲート（人手レビューなし）。不合格記事があれば非ゼロ終了でジョブを止め、
